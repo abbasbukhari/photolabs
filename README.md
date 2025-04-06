@@ -2,6 +2,8 @@
 
 PhotoLabs is a React-based single-page application (SPA) that allows users to view, like, and explore photos in different categories. The project includes a backend API built with Node.js and Express, and a PostgreSQL database for data persistence.
 
+---
+
 ## Features
 
 - View photos on the homepage.
@@ -36,18 +38,41 @@ PhotoLabs is a React-based single-page application (SPA) that allows users to vi
 - npm (Node Package Manager)
 
 ### Steps
-1. Clone the repository:
+
+1. **Clone the repository**  
    ```bash
    git clone https://github.com/<your-username>/photolabs.git
    cd photolabs
-2. Install dependencies for the backend:
-    cd backend
-    npm install
-3. Set up the database:
-    Log in to PostgreSQL:
-    psql -U postgres
-    Create the database: 
-        CREATE DATABASE photolabs_development;
-    Grant privileges to the development user:
-        CREATE USER development WITH PASSWORD 'development';
-        GRANT ALL PRIVILEGES ON DATABASE photolabs_development TO development;
+   ```
+
+2. **Install dependencies for the backend**  
+   ```bash
+   cd backend
+   npm install
+   ```
+
+3. **Set up the database**
+
+   Log in to PostgreSQL:
+   ```bash
+   psql -U postgres
+   ```
+
+   Create the database and user:
+   ```sql
+   CREATE DATABASE photolabs_development;
+   CREATE USER development WITH PASSWORD 'development';
+   GRANT ALL PRIVILEGES ON DATABASE photolabs_development TO development;
+   ```
+
+4. **Seed the database**
+   ```bash
+   npm run reset
+   ```
+
+5. **Start the backend server**
+   ```bash
+   npm start
+   ```
+
+---
