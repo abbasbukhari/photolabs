@@ -1,24 +1,27 @@
 import React from "react";
 import "../styles/PhotoListItem.scss";
+import PhotoListItem from "../../components/PhotoListItem";
 
-const PhotoListItem = ({ photo }) => {
+const PhotoListItem = ({ photo = {} }) => {
+  const { urls = {}, location = {}, user = {} } = photo;
+
   return (
     <div className="photo-list__item">
       <img
         className="photo-list__image"
-        src={photo.urls.regular}
-        alt={photo.location.city}
+        src={urls.regular || "https://via.placeholder.com/150"}
+        alt={location.city || "Unknown"}
       />
       <div className="photo-list__user-details">
         <img
           className="photo-list__user-profile"
-          src={photo.user.profile}
-          alt={photo.user.name}
+          src={user.profile || "https://via.placeholder.com/50"}
+          alt={user.name || "Unknown User"}
         />
         <div className="photo-list__user-info">
-          <div>{photo.user.name}</div>
+          <div>{user.name || "Unknown User"}</div>
           <div className="photo-list__user-location">
-            {photo.location.city}, {photo.location.country}
+            {location.city || "Unknown City"}, {location.country || "Unknown Country"}
           </div>
         </div>
       </div>

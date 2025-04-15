@@ -1,5 +1,2 @@
-// jest-dom adds custom jest matchers for asserting on DOM nodes.
-// allows you to do things like:
-// expect(element).toHaveTextContent(/react/i)
-// learn more: https://github.com/testing-library/jest-dom
+// filepath: /Users/abbas/Desktop/Code/Lighthouse_Labs/photolabs/photolabs-main/frontend/src/setupTests.js
 import '@testing-library/jest-dom';
