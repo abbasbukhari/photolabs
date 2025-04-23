@@ -1,14 +1,35 @@
-import PhotoListItem from './components/PhotoListItem';
-import './App.scss';
+import React, { useEffect, useState } from "react";
+import "./App.scss";
+import PhotoListItem from "./components/PhotoListItem";
 
-// Note: Rendering a single component to build components in isolation
-const App = ({ photos = [] }) => {
+const App = () => {
+  const [photos, setPhotos] = useState([]);
+  const [darkMode, setDarkMode] = useState(false);
+
+  useEffect(() => {
+    fetch("http://localhost:3001/photos")
+      .then((response) => response.json())
+      .then((data) => setPhotos(data))
+      .catch((error) => console.error("Error fetching photos:", error));
+  }, []);
+
+  const toggleDarkMode = () => {
+    setDarkMode((prevMode) => !prevMode);
+  };
+
   return (
-    <div className="App">
-      <h1>PhotoLabs</h1>
-      {photos.map((photo, index) => (
-        <PhotoListItem key={index} photo={photo} />
-      ))}
+    <div className={`App ${darkMode ? "dark-mode" : "light-mode"}`}>
+      <header>
+        <h1>PhotoLabs</h1>
+        <button onClick={toggleDarkMode}>
+          {darkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
+        </button>
+      </header>
+      <div className="photo-list">
+        {photos.map((photo, index) => (
+          <PhotoListItem key={index} photo={photo} />
+        ))}
+      </div>
     </div>
   );
 };

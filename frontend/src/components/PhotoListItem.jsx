@@ -1,8 +1,6 @@
 import React from "react";
-import "../styles/PhotoListItem.scss";
-import PhotoListItem from "../../components/PhotoListItem";
 
-const PhotoListItem = ({ photo = {} }) => {
+const PhotoListItem = ({ photo }) => {
   const { urls = {}, location = {}, user = {} } = photo;
 
   return (

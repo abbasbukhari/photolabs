@@ -1,1 +1,50 @@
-{}
+{
+  "name": "photolabs",
+  "version": "1.0.0",
+  "description": "PhotoLabs is a React-based single-page application for exploring and liking photos.",
+  "main": "index.js",
+  "scripts": {
+    "start": "vite",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "jest"
+  },
+  "author": "Abbas",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^1.4.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.14.1"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.22.20",
+    "@babel/preset-react": "^7.22.5",
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "^14.3.1",
+    "@vitejs/plugin-react": "^4.3.4",
+    "eslint": "^8.57.0",
+    "eslint-plugin-react": "^7.37.2",
+    "eslint-plugin-react-hooks": "^5.0.0",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
+    "sass": "^1.59.2",
+    "vite": "^4.4.2"
+  },
+  "photos": [
+    {
+      "id": 1,
+      "urls": { "regular": "https://example.com/photo1.jpg" },
+      "location": { "city": "Toronto", "country": "Canada" },
+      "user": { "profile": "https://example.com/user1.jpg", "name": "John Doe" }
+    },
+    {
+      "id": 2,
+      "urls": { "regular": "https://example.com/photo2.jpg" },
+      "location": { "city": "Vancouver", "country": "Canada" },
+      "user": { "profile": "https://example.com/user2.jpg", "name": "Jane Smith" }
+    }
+  ]
+}
