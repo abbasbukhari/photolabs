@@ -1,15 +1,14 @@
 import React from "react";
 
-const Navbar = ({ toggleDarkMode, darkMode }) => {
+const Navbar = ({ toggleDarkMode, darkMode, setSelectedCategory }) => {
   return (
     <nav className="navbar">
       <h1 className="navbar__title">PhotoLabs</h1>
       <ul className="navbar__links">
-        <li>People</li>
-        <li>Nature</li>
-        <li>Travel</li>
-        <li>Animals</li>
-        <li>Fashion</li>
+        <li onClick={() => setSelectedCategory("Nature")}>Nature</li>
+        <li onClick={() => setSelectedCategory("Travel")}>Travel</li>
+        <li onClick={() => setSelectedCategory("Animals")}>Animals</li>
+        <li onClick={() => setSelectedCategory("All")}>All</li> {/* Option to show all photos */}
       </ul>
       <div className="navbar__actions">
         <button className="navbar__icon">❤️</button>
