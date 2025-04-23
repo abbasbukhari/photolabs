@@ -1,30 +1,35 @@
 import React from "react";
 
-const PhotoListItem = ({ photo }) => {
-  const { urls = {}, location = {}, user = {} } = photo;
-
+const PhotoList = ({ photos }) => {
   return (
-    <div className="photo-list__item">
-      <img
-        className="photo-list__image"
-        src={urls.regular || "https://via.placeholder.com/150"}
-        alt={location.city || "Unknown"}
-      />
-      <div className="photo-list__user-details">
-        <img
-          className="photo-list__user-profile"
-          src={user.profile || "https://via.placeholder.com/50"}
-          alt={user.name || "Unknown User"}
-        />
-        <div className="photo-list__user-info">
-          <div>{user.name || "Unknown User"}</div>
-          <div className="photo-list__user-location">
-            {location.city || "Unknown City"}, {location.country || "Unknown Country"}
+    <div className="photo-list">
+      {photos.map((photo) => (
+        <div className="photo-list__item" key={photo.id}>
+          <div className="photo-list__image-container">
+            <img
+              className="photo-list__image"
+              src={photo.urls.regular}
+              alt={photo.location.city}
+            />
+            <button className="photo-list__like-button">❤️</button>
+          </div>
+          <div className="photo-list__user-details">
+            <img
+              className="photo-list__user-profile"
+              src={photo.user.profile}
+              alt={photo.user.name}
+            />
+            <div className="photo-list__user-info">
+              <div className="photo-list__user-name">{photo.user.name}</div>
+              <div className="photo-list__user-location">
+                {photo.location.city}, {photo.location.country}
+              </div>
+            </div>
           </div>
         </div>
-      </div>
+      ))}
     </div>
   );
 };
 
-export default PhotoListItem;
+export default PhotoList;
