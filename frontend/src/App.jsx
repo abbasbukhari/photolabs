@@ -1,19 +1,24 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Navbar from "./components/Navbar";
 import PhotoListItem from "./components/PhotoListItem";
-import "./App.scss"; // Ensure your CSS/SCSS file is imported
+import "./App.scss";
 
 const App = () => {
-  const [photos, setPhotos] = useState([]);
   const [darkMode, setDarkMode] = useState(false);
 
-  useEffect(() => {
-    // Fetch photos from the backend API
-    fetch("http://localhost:3001/photos") // Ensure the backend is running on port 3001
-      .then((response) => response.json())
-      .then((data) => setPhotos(data))
-      .catch((error) => console.error("Error fetching photos:", error));
-  }, []);
+  // Dynamically generate photo data for images in the public folder
+  const photos = Array.from({ length: 10 }, (_, index) => ({
+    id: index + 1,
+    url: `/Image-${index + 1}-Regular.jpeg`, // Corrected path for images
+    user: {
+      name: "John Doe", // Single profile name
+      profile: `/profile-1.jpg`, // Single profile picture
+    },
+    location: {
+      city: index % 2 === 0 ? "Toronto" : "Vancouver",
+      country: "Canada",
+    },
+  }));
 
   const toggleDarkMode = () => {
     setDarkMode((prevMode) => !prevMode);
@@ -21,18 +26,11 @@ const App = () => {
 
   return (
     <div className={`App ${darkMode ? "dark-mode" : "light-mode"}`}>
-      {/* Navbar Component */}
       <Navbar toggleDarkMode={toggleDarkMode} darkMode={darkMode} />
-
-      {/* Photo List */}
       <div className="photo-list">
-        {photos.length > 0 ? (
-          photos.map((photo) => (
-            <PhotoListItem key={photo.id} photo={photo} />
-          ))
-        ) : (
-          <p>Loading photos...</p>
-        )}
+        {photos.map((photo) => (
+          <PhotoListItem key={photo.id} photo={photo} />
+        ))}
       </div>
     </div>
   );
