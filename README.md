@@ -30,49 +30,104 @@ PhotoLabs is a React-based single-page application (SPA) that allows users to vi
 
 ---
 
-## Installation
+## Installation FrontEnd
 
-### Prerequisites
-- Node.js (v14 or higher)
-- PostgreSQL (v14 or higher)
-- npm (Node Package Manager)
+# PhotoLabs React Application
 
-### Steps
+## Setup
 
-1. **Clone the repository**  
-   ```bash
-   git clone https://github.com/<your-username>/photolabs.git
-   cd photolabs
-   ```
+Install dependencies with `npm install`.
 
-2. **Install dependencies for the backend**  
-   ```bash
-   cd backend
-   npm install
-   ```
+Note: This project requires at least Node v16
 
-3. **Set up the database**
+## Run The Development Server
 
-   Log in to PostgreSQL:
-   ```bash
-   psql -U postgres
-   ```
+Start the server with
 
-   Create the database and user:
-   ```sql
-   CREATE DATABASE photolabs_development;
-   CREATE USER development WITH PASSWORD 'development';
-   GRANT ALL PRIVILEGES ON DATABASE photolabs_development TO development;
-   ```
+```sh
+npm run dev
+```
 
-4. **Seed the database**
-   ```bash
-   npm run reset
-   ```
+You can visit the running application at [http://localhost:3000](http://localhost:3000)
 
-5. **Start the backend server**
-   ```bash
-   npm start
-   ```
+## Run The Linter
+
+You can run eslint with the following command:
+
+```sh
+npm run lint
+```
+
+## Run The Jest Tests
+
+The tests can be run with:
+
+```sh
+npm run test
+# or
+npm test
+```
 
 ---
+## Installation BackEnd
+
+# Photolabs API
+
+## Setup
+
+Install dependencies with `npm install`.
+
+## Creating The DB
+
+Use the `psql -U labber` command to login to the PostgreSQL server with the username `labber` and the password `labber`.
+
+Create a database with the command `CREATE DATABASE photolabs_development;`.
+
+Copy the `.env.example` file to `.env.development` and fill in the necessary PostgreSQL configuration. The `node-postgres` library uses these environment variables by default.
+
+```
+PGHOST=localhost
+PGUSER=labber
+PGDATABASE=photolabs_development
+PGPASSWORD=labber
+PGPORT=5432
+```
+
+## Seeding
+
+Run the development server with `npm start`.
+
+Both of these achieve the same result.
+
+- Make a `GET` request to `/api/debug/reset` with `curl http://localhost:8001/api/debug/reset`.
+- Use the browser to navigate to [http://localhost:8001/api/debug/reset](http://localhost:8001/api/debug/reset).
+
+## Run The Server
+
+Running the server normally
+```sh
+npm start
+```
+
+Running the server so it returns an error when saving/deleting for testing the client's error handling capabilities
+```sh
+npm run error
+```
+
+## Endpoints
+
+### Retrieve all photos
+
+[/api/photos](http://localhost:8001/api/photos)
+
+### Retrieve all topics
+
+[/api/topics](http://localhost:8001/api/topics)
+
+### Retrieve photos for a specific topic
+
+[/api/topics/:id/photos](http://localhost:8001/api/topics/:id/photos)
+
+### Reset the database
+
+[/api/debug/reset](http://localhost:8001/api/debug/reset)
